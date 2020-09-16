@@ -1,0 +1,15 @@
+package datastructure;
+/**
+ * @version September 15th 2020
+ * @author Fernanda A00352189
+ * @param <K> the key of the hash table
+ * @param <T> the element added to the hash table in its respective key
+ */
+public interface IHashTable<K,T> {
+	//Methods
+	public void insert(K key, T element);
+	public void delete(K key, T element);
+	public IHashTable<K, T> search(K key, T element);
+	public boolean isEmpty();
+	public int size();
+}
