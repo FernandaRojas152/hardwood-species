@@ -1,11 +1,20 @@
 package datastructure;
 
 public class HTable<K,T> implements IHashTable<K, T> {
-
+	/** */
+	private final static int SIZE=1000000;
+	
+	/** */
+	private HashElement<K, T>[] map;
+	
+	/** */
+	int key;
+	
 	@Override
 	public void insert(K key, T element) {
 		// TODO Auto-generated method stub
 		
+		map= new HashElement[SIZE];
 	}
 
 	@Override
@@ -22,14 +31,19 @@ public class HTable<K,T> implements IHashTable<K, T> {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
-		return 0;
+		return SIZE;
+	}
+
+	@Override
+	public boolean contains() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
