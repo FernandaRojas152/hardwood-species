@@ -3,8 +3,11 @@ package model;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @version September 15th 2020
@@ -15,7 +18,7 @@ import java.util.Map;
 public class Main1 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		/** HashMap of Java that represents the group of trees */
-		HashMap<String, Integer> tree= new HashMap<String, Integer>();
+		HashMap<String, Integer> tree;
 
 		/** 
 		 * It's used BufferedReader instead of Scanner to read the data because BufferedReader has
@@ -30,21 +33,21 @@ public class Main1 {
 
 		/** An integer that represents the one hundred percent, the total of trees*/
 		final int PERCENTAGE= 100;
-		
+
 		/** Amount of times a key it's appearing*/
 		int rep=0;
-		
+
 		/** The first line, that it's going to be the empty line*/
 		String line= br.readLine();
-		
+
 		/** An integer that represents the total of trees that the user inputs*/
 		int size= 0;
-		
 		/**
 		 * pre:
 		 * pos:
 		 */
 		for (int i = 0; i < cases; i++) {
+			tree=new HashMap<String, Integer>();
 			while((line= br.readLine())!=null && !line.isEmpty()) {
 				if(tree.containsKey(line)) {
 					rep= tree.get(line);
@@ -54,16 +57,31 @@ public class Main1 {
 				}
 				size++;
 			}
-			
 			/**
 			 * how to loop in hashMap? Map.Entry<K,V>
 			 * entrySet() shows all the maps, set viewing of the mappings in the map (API)
 			 */
-			for(Map.Entry<String, Integer> me : tree.entrySet()) {
-				//to round it to 4 decimals it's used %.4f o DecimalFormat d = new DecimalFormat("#.####");
+			/**for(Map.Entry<String, Integer> me : tree.entrySet()) {
+				//shows 4 decimals it's used %.4f o DecimalFormat d = new DecimalFormat("#.####");
 				String key = me.getKey();
 				Integer total = me.getValue();
-				System.out.printf("%.4f", key, (total/size)*PERCENTAGE);
+				double p= (total*1.0/size)*PERCENTAGE;
+
+				System.out.printf("%s %.4f\n", key, p);
+				//System.out.println(key+ " "+ df.format(p));
+			}*/
+
+			ArrayList<String> a= new ArrayList<>(tree.keySet());
+			Collections.sort(a, new Comparator<String>() {
+				@Override
+				public int compare(String o1, String o2 ) {
+					return o1.compareTo(o2);
+				}
+			});
+			for(int j=0; j<a.size(); j++) {
+				int total= tree.get(a.get(j));
+				double p= (total*1.0/size)*PERCENTAGE;
+				System.out.printf("%s %.4f\n", a.get(j), p);
 			}
 			if (i<cases-1) {
 				System.out.println(" ");

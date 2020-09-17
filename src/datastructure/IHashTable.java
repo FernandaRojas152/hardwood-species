@@ -12,5 +12,6 @@ public interface IHashTable<K,T> {
 	public IHashTable<K, T> search(K key, T element);
 	public boolean isEmpty();
 	public int size();
-	public boolean contains();
+	public boolean contains(K key);
+	public int getSlot(K key);
 }

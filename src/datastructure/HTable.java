@@ -2,19 +2,31 @@ package datastructure;
 
 public class HTable<K,T> implements IHashTable<K, T> {
 	/** */
-	private final static int SIZE=1000000;
+	private final static int SIZE=10000;
 	
 	/** */
 	private HashElement<K, T>[] map;
 	
 	/** */
-	int key;
+	int key[];
+	int occupied;
+	
+	public HTable() {
+		map= new HashElement[SIZE];
+	}
+	
+	@Override
+	public int getSlot(K key) {
+		//Math.floor(SIZE);
+		//Math.ceil(SIZE);
+		return key.hashCode() % SIZE;
+	}
 	
 	@Override
 	public void insert(K key, T element) {
-		// TODO Auto-generated method stub
+		int hashIndex= getSlot(key);
+		HashElement<K, T> newElement = new HashElement<K, T>(key, element);		
 		
-		map= new HashElement[SIZE];
 	}
 
 	@Override
@@ -39,11 +51,13 @@ public class HTable<K,T> implements IHashTable<K, T> {
 		// TODO Auto-generated method stub
 		return SIZE;
 	}
-
+	
 	@Override
-	public boolean contains() {
+	public boolean contains(K key) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	
 
 }
