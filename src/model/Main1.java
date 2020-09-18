@@ -50,15 +50,15 @@ public class Main1 {
 			 * entrySet() shows all the maps, set viewing of the mappings in the map (API)
 			 */
 			Collections.sort(a);
-			StringBuilder sb=new StringBuilder();
+			StringBuilder builder=new StringBuilder();
 			for(String t : a) {
 				//shows 4 decimals it's used %.4f o DecimalFormat d = new DecimalFormat("#.####");
-				sb.append(String.format("%s %.4f\n", t, (tree.get(t)/size)*100.0));
+				builder.append(String.format("%s %.4f\n", t, (tree.get(t)/size)*100.0));
 			}
 			if (i<cases-1) {
-				System.out.println(sb.toString());
+				System.out.println(builder.toString());
 			}else {
-				System.out.print(sb.toString());
+				System.out.print(builder.toString());
 			}
 		}
 	}

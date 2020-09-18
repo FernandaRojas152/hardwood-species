@@ -8,8 +8,8 @@ package datastructure;
 public interface IHashTable<K,T> {
 	//Methods
 	public void insert(K key, T element);
-	public void delete(K key, T element);
-	public IHashTable<K, T> search(K key, T element);
+	public void delete(K key);
+	public HashElement<K, T> search(K key);
 	public boolean isEmpty();
 	public int size();
 	public boolean contains(K key);
