@@ -101,6 +101,10 @@ public class HTable<K,T> implements IHashTable<K, T> {
 		return aux;
 	}
 	
+	public int amountTimes(K key) {
+		return 0;
+	}
+	
 	/**
 	 * 
 	 */
